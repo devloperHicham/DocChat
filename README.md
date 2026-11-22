@@ -21,7 +21,7 @@ DocChat transforms PDF documents into an interactive workspace where you can und
 
 Upload a document, wait for the analysis to finish, and start asking questions. DocChat retrieves relevant content from your document and uses it to generate contextual answers.
 
-![DocChat ready screen](docs/images/ready.png)
+![DocChat ready screen](docs/images/captute .png)
 
 ## Screenshots
 
