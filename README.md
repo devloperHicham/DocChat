@@ -27,11 +27,7 @@ Upload a document, wait for the analysis to finish, and start asking questions. 
 
 | PDF Upload | Document Analysis |
 |---|---|
-| ![Upload](docs/images/upload.png) | ![Processing](docs/images/processing.png) | ![Chating](docs/images/chating.png) |
-
-| Desktop Workspace | Mobile Interface |
-|---|---|
-| ![Desktop](docs/images/ready.png) | ![Mobile](docs/images/mobile.png) |
+| ![Upload](docs/images/upload.PNG) | ![Processing](docs/images/Capture2.PNG) | ![Chating](docs/images/chating.PNG) |
 
 ---
 
