@@ -1,5 +1,12 @@
 # DocChat — Local AI-Powered PDF Assistant
 
+![Java 21](https://img.shields.io/badge/Java-21-orange?logo=openjdk)
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-4.1-brightgreen?logo=springboot)
+![Angular](https://img.shields.io/badge/Angular-Modern-red?logo=angular)
+![Docker](https://img.shields.io/badge/Docker-Compose-blue?logo=docker)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-17-blue?logo=postgresql)
+![License](https://img.shields.io/badge/License-MIT-green)
+
 **DocChat is a locally hosted AI assistant that lets you upload PDF documents, explore their content, generate summaries, and ask questions using Retrieval-Augmented Generation (RAG).**
 
 Instead of sending your documents to an external AI service, DocChat uses locally running AI models through Ollama, with PostgreSQL and pgvector for document storage and semantic retrieval.
@@ -20,7 +27,11 @@ Upload a document, wait for the analysis to finish, and start asking questions. 
 
 | PDF Upload | Document Analysis |
 |---|---|
-| ![Upload](docs/images/capture1.png) | ![Processing](docs/images/capture2.png) |
+| ![Upload](docs/images/upload.png) | ![Processing](docs/images/processing.png) |
+
+| Desktop Workspace | Mobile Interface |
+|---|---|
+| ![Desktop](docs/images/ready.png) | ![Mobile](docs/images/mobile.png) |
 
 ---
 
@@ -683,8 +694,8 @@ The AI models used by DocChat are distributed separately and are subject to thei
 
 Senior Full Stack Developer | Java & Spring Boot | Angular | Microservices | Application Security | AI Integration
 
-- GitHub: https://github.com/devloperHicham
-- Project: https://github.com/devloperHicham/DocChat
+- GitHub: [@devloperHicham](https://github.com/devloperHicham)
+- Project: [DocChat](https://github.com/devloperHicham/DocChat)
 
 ---
 
