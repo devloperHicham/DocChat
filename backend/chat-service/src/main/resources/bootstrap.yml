@@ -1,0 +1,71 @@
+spring:
+  application:
+    name: chat-service
+
+  threads:
+    virtual:
+      enabled: true
+
+  lifecycle:
+    timeout-per-shutdown-phase: 30s
+
+  mvc:
+    async:
+      request-timeout: 5m
+
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/chat_db}
+    username: ${SPRING_DATASOURCE_USERNAME:chat_user}
+    password: ${SPRING_DATASOURCE_PASSWORD}
+
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 20MB
+
+  ai:
+  ollama:
+    base-url: ${OLLAMA_BASE_URL:http://localhost:11434}
+
+    init:
+      pull-model-strategy: never
+
+    chat:
+      options:
+        model: llama3.2
+
+    embedding:
+      options:
+        model: nomic-embed-text
+
+  vectorstore:
+    pgvector:
+      initialize-schema: true
+      index-type: HNSW
+      distance-type: COSINE_DISTANCE
+      dimensions: 768
+
+server:
+  shutdown: graceful
+  error:
+    include-message: never
+    include-stacktrace: never
+    include-binding-errors: never
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: never
+
+logging:
+  pattern:
+    level: "%5p [%X{requestId:-}]"
+
+docchat:
+  rag:
+    top-k: 4
+    similarity-threshold: 0.5

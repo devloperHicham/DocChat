@@ -1,0 +1,125 @@
+:host {
+    display: flex;
+    flex: 1;
+    min-width: 0;
+    min-height: 0;
+}
+
+.panel {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: var(--space-4);
+    min-width: 0;
+    min-height: 0;
+}
+
+.log {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: var(--space-3);
+    min-height: 0;
+    overflow: auto;
+}
+
+.bubble {
+    align-self: flex-start;
+    max-width: min(80%, 640px);
+    padding: var(--space-3) var(--space-4);
+    background: var(--color-ground);
+    border-radius: 16px 16px 16px 4px;
+}
+
+.bubble--user {
+    align-self: flex-end;
+    background: var(--color-accent);
+    color: #fff;
+    border-radius: 16px 16px 4px 16px;
+}
+
+.bubble--notice {
+    background: var(--color-notice-bg);
+    border: 1px solid var(--color-notice-line);
+    color: var(--color-notice-ink);
+}
+
+.text {
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+    white-space: pre-wrap;
+}
+
+.chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+}
+
+.chip {
+    min-height: 40px;
+    padding: 0 14px;
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-pill);
+    background: var(--color-surface);
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    touch-action: manipulation;
+}
+
+.chip:hover {
+    background: var(--color-accent-soft);
+    border-color: var(--color-accent);
+}
+
+.composer {
+    display: flex;
+    gap: var(--space-3);
+}
+
+.composer__input {
+    flex: 1;
+    min-width: 0;
+    min-height: 52px;
+    padding: 0 18px;
+    border: 1px solid var(--color-line-strong);
+    border-radius: 26px;
+    background: var(--color-surface);
+    font-size: 1rem;
+    /* 16px: avoids the iOS zoom on focus */
+}
+
+.composer__send {
+    min-height: 52px;
+    padding: 0 28px;
+    border-radius: 26px;
+}
+
+@media (max-width: 899px) {
+    .bubble {
+        max-width: 90%;
+    }
+
+    .chips {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+    }
+
+    .chip {
+        flex: none;
+    }
+
+    .composer {
+        gap: var(--space-2);
+    }
+
+    .composer__input {
+        min-height: 48px;
+    }
+
+    .composer__send {
+        min-height: 48px;
+        padding: 0 20px;
+    }
+}

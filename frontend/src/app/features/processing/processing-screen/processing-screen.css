@@ -1,0 +1,140 @@
+:host {
+    display: flex;
+    flex: 1;
+    min-height: 0;
+}
+
+.screen {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-4);
+    overflow: auto;
+}
+
+.panel {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+    width: min(100%, 560px);
+    padding: var(--space-6);
+}
+
+.title {
+    font-size: 1.375rem;
+    font-weight: 700;
+}
+
+.lead {
+    margin-top: var(--space-2);
+    color: var(--color-muted);
+}
+
+.file {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3) 14px;
+    background: var(--color-ground);
+    border-radius: 10px;
+    color: var(--color-accent);
+}
+
+.file__name {
+    color: var(--color-ink);
+    font-weight: 600;
+    overflow-wrap: anywhere;
+}
+
+.bar {
+    height: 8px;
+    overflow: hidden;
+    border-radius: 4px;
+    background: var(--color-segment);
+}
+
+.bar__fill {
+    width: 40%;
+    height: 100%;
+    border-radius: 4px;
+    background: var(--color-accent);
+    animation: slide 1.4s ease-in-out infinite;
+}
+
+.steps {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 0;
+    list-style: none;
+}
+
+.step {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    color: var(--color-muted);
+}
+
+.step--current {
+    color: var(--color-ink);
+    font-weight: 600;
+}
+
+.step--done {
+    color: var(--color-ink);
+}
+
+.step__dot {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border: 2px solid var(--color-line-strong);
+    border-radius: 50%;
+    color: #fff;
+    font-size: 14px;
+}
+
+.step--current .step__dot {
+    border: 3px solid var(--color-accent);
+    border-right-color: var(--color-accent-soft);
+    animation: spin 1s linear infinite;
+}
+
+.step--done .step__dot {
+    background: var(--color-success);
+    border-color: var(--color-success);
+}
+
+.step--done .step__dot::after {
+    content: '✓';
+}
+
+.cancel {
+    align-self: flex-start;
+}
+
+@keyframes slide {
+    from {
+        transform: translateX(-100%);
+    }
+
+    to {
+        transform: translateX(250%);
+    }
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media (max-width: 599px) {
+    .panel {
+        padding: var(--space-5) var(--space-4);
+    }
+}

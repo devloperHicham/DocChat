@@ -1,0 +1,33 @@
+<app-header [showNewDocument]="store.phase() === 'ready'" (newDocument)="confirmNewOpen.set(true)" />
+@switch (store.phase()) {
+@case ('empty') {
+<app-upload-screen [error]="store.uploadError()" (fileSelected)="store.upload($event)" />
+}
+@case ('processing') {
+<app-processing-screen [fileName]="store.fileName()" [fileSize]="store.fileSize()" [step]="store.step()"
+  (cancelled)="store.startOver()" />
+}
+@case ('ready') {
+<main class="workspace" [attr.data-view]="store.mobileView()">
+  <div class="view-switch" role="group" aria-label="View">
+    @for (item of mobileViews; track item.view) {
+    <button type="button" class="view-switch__button" [attr.aria-pressed]="store.mobileView() === item.view"
+      (click)="store.setMobileView(item.view)">
+      {{ item.label }}
+    </button>
+    }
+  </div>
+
+  <app-document-panel [fileName]="store.fileName()" [chunks]="store.chunks()" [summary]="store.summary()"
+    [summaryFailed]="store.summaryFailed()" />
+
+  <app-chat-panel [messages]="store.messages()" [asking]="store.asking()" [suggestions]="suggestions"
+    (questionSubmitted)="store.ask($event)" />
+</main>
+}
+}
+
+<app-confirm-dialog [open]="confirmNewOpen()" title="Start a new document?" [message]="confirmNewMessage()"
+  detail="The summary and all your questions and answers will be removed, and you will not be able to come back to them."
+  cancelLabel="No, keep chatting" confirmLabel="Yes, start new" (confirmed)="startNew()"
+  (cancelled)="confirmNewOpen.set(false)" />

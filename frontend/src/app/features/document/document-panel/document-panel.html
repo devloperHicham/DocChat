@@ -1,0 +1,32 @@
+<aside class="card panel" aria-label="Document">
+    <div class="file">
+        <span class="file__icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z" />
+                <path d="M14 3v5h5" />
+            </svg>
+        </span>
+        <div>
+            <p class="file__name">{{ fileName() }}</p>
+            <p class="hint">{{ chunks() }} {{ chunks() === 1 ? 'passage' : 'passages' }} · ready</p>
+        </div>
+    </div>
+
+    <hr class="divider" />
+
+    <h2 class="label">Summary</h2>
+    @if (summaryFailed()) {
+    <p class="hint">The summary could not be generated. You can still ask questions.</p>
+    } @else {
+    <p class="text" dir="auto">{{ parsed().intro || summary() }}</p>
+    @if (parsed().points.length) {
+    <h2 class="label">Key points</h2>
+    <ul class="points">
+        @for (point of parsed().points; track $index) {
+        <li dir="auto">{{ point }}</li>
+        }
+    </ul>
+    }
+    }
+</aside>

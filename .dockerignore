@@ -1,0 +1,20 @@
+cat > frontend/.dockerignore <<'EOF'
+node_modules
+**/node_modules
+dist
+.angular
+.git
+.idea
+.vscode
+*.env*
+Dockerfile
+.dockerignore
+EOF
+
+cat > backend/chat-service/.dockerignore <<'EOF'
+target
+.git
+.idea
+*.iml
+.env
+EOF

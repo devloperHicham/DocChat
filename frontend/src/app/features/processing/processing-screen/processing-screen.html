@@ -1,0 +1,40 @@
+<main class="screen">
+    <section class="card panel" aria-labelledby="processing-title" aria-busy="true">
+        <div class="file">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z" />
+                <path d="M14 3v5h5" />
+            </svg>
+            <div>
+                <p class="file__name">{{ fileName() }}</p>
+                <p class="hint">{{ sizeLabel() }}</p>
+            </div>
+        </div>
+
+        <div>
+            <h2 id="processing-title" class="title">Analyzing your document</h2>
+            <p class="lead">This can take a few minutes on this computer. Please keep this page open.</p>
+        </div>
+
+        <div class="bar" role="progressbar" aria-label="Analyzing the document">
+            <div class="bar__fill"></div>
+        </div>
+
+        <ol class="steps">
+            <li class="step" [class.step--current]="step() === 'indexing'" [class.step--done]="step() === 'summary'">
+                <span class="step__dot" aria-hidden="true"></span>
+                Reading and indexing the document
+            </li>
+            <li class="step" [class.step--current]="step() === 'summary'">
+                <span class="step__dot" aria-hidden="true"></span>
+                Writing the summary
+            </li>
+        </ol>
+
+        <p class="hint" role="status">{{ status() }}</p>
+        <p class="hint">The summary and the chat appear together as soon as everything is ready.</p>
+
+        <button type="button" class="button button--secondary cancel" (click)="cancelled.emit()">Cancel</button>
+    </section>
+</main>

@@ -1,0 +1,26 @@
+<main class="screen">
+    <section class="card panel" aria-labelledby="upload-title">
+        <h2 id="upload-title" class="title">Chat with your PDF</h2>
+        <p class="lead">Upload a document, get a summary, then ask questions answered only from its content.</p>
+
+        <div class="dropzone" [class.dropzone--active]="dragging()" (dragover)="onDragOver($event)"
+            (dragleave)="onDragLeave()" (drop)="onDrop($event)">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z" />
+                <path d="M14 3v5h5M12 17v-6M9.5 13.5 12 11l2.5 2.5" />
+            </svg>
+            <p class="dropzone__text">Drag and drop a PDF here</p>
+            <p class="hint">or</p>
+            <input id="pdf-input" class="visually-hidden" type="file" accept="application/pdf,.pdf"
+                (change)="onChange($event)" />
+            <label for="pdf-input" class="button button--primary">Choose a PDF</label>
+            <p class="hint">PDF, up to 20 MB</p>
+        </div>
+
+        @if (error()) {
+        <p class="error" role="alert">{{ error() }}</p>
+        }
+        <p class="hint">Your document stays on your own server.</p>
+    </section>
+</main>

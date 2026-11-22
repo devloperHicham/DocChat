@@ -1,0 +1,32 @@
+<section class="card panel" aria-label="Chat">
+    <div #log class="log" role="log" aria-live="polite" aria-label="Conversation" [attr.aria-busy]="asking()"
+        tabindex="0">
+        @if (messages().length === 0) {
+        <p class="hint">Ask a question below, or try one of the suggestions.</p>
+        }
+        @for (message of messages(); track $index) {
+        <div class="bubble" [class.bubble--user]="message.role === 'user'" [class.bubble--notice]="isNotice(message)">
+            @if (message.text) {
+            <p class="text" dir="auto">{{ message.text }}</p>
+            } @else {
+            <p class="text hint">Thinking…</p>
+            }
+        </div>
+        }
+    </div>
+
+    @if (!asking() && suggestions().length) {
+    <div class="chips" role="group" aria-label="Suggested questions">
+        @for (suggestion of suggestions(); track suggestion) {
+        <button type="button" class="chip" (click)="suggest(suggestion)">{{ suggestion }}</button>
+        }
+    </div>
+    }
+
+    <form class="composer" (submit)="submit($event)">
+        <label class="visually-hidden" for="question">Your question</label>
+        <input id="question" class="composer__input" type="text" dir="auto" autocomplete="off" maxlength="2000"
+            placeholder="Ask anything about this document…" [value]="draft()" (input)="onInput($event)" />
+        <button type="submit" class="button button--primary composer__send" [disabled]="!canSend()">Send</button>
+    </form>
+</section>
